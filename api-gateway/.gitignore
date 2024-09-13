@@ -1,0 +1,86 @@
+# Help files
+HELP.md
+
+# Maven specific
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Gradle specific
+.gradle
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+.gradle-cache/
+
+# STS (Spring Tool Suite) ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Eclipse ###
+.classpath
+.project
+.settings/
+
+# Visual Studio Code ###
+.vscode/
+
+# OS generated files ###
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.cache/
+.config/
+.local/
+
+# Log files
+*.log
+*.out
+*.err
+
+# Package files ###
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+# Virtual machine crash logs
+hs_err_pid*
+replay_pid*
+
+# Other system files ###
+*.swp
+*.swo

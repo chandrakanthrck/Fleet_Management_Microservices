@@ -1,6 +1,6 @@
 package com.fleetmanagement.driver_service.service;
 
-import com.fleetmanagement.driver_service.entity.Driver;
+import com.fleetmanagement.common_entities.entities.Driver;
 import com.fleetmanagement.driver_service.repository.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

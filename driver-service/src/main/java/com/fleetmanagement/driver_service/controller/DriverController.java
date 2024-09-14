@@ -1,6 +1,6 @@
 package com.fleetmanagement.driver_service.controller;
 
-import com.fleetmanagement.driver_service.entity.Driver;
+import com.fleetmanagement.common_entities.entities.Driver;
 import com.fleetmanagement.driver_service.service.DriverService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

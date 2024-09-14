@@ -2,6 +2,7 @@ package com.fleetmanagement.route_service.controller;
 
 import com.fleetmanagement.route_service.entity.Route;
 import com.fleetmanagement.route_service.service.RouteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class RouteController {
 
     // Create or update a route
     @PostMapping
-    public ResponseEntity<Route> saveRoute(@RequestBody Route route) {
+    public ResponseEntity<Route> saveRoute(@Valid @RequestBody Route route) {
         Route savedRoute = routeService.saveRoute(route);
         return new ResponseEntity<>(savedRoute, HttpStatus.CREATED);
     }
@@ -33,7 +34,7 @@ public class RouteController {
 
     // Get route by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Route> getRouteById(@PathVariable Long id) {
+    public ResponseEntity<Route> getRouteById(@PathVariable(name = "id") Long id) {
         Optional<Route> route = routeService.getRouteById(id);
         return route.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -41,7 +42,7 @@ public class RouteController {
 
     // Delete route by ID
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRoute(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteRoute(@PathVariable(name = "id") Long id) {
         routeService.deleteRoute(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

@@ -55,12 +55,34 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+
+		<!-- Lombok for reducing boilerplate code -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Jakarta Validation API -->
+		<dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+		</dependency>
+
+		<!-- Common Entities Dependency -->
+		<dependency>
+			<groupId>com.fleetmanagement</groupId>
+			<artifactId>common-entities</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- Driver Service Client Dependency -->
+		<dependency>
+			<groupId>com.fleetmanagement</groupId>
+			<artifactId>driver-service-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
@@ -72,6 +94,12 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-openfeign</artifactId>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
@@ -81,6 +109,20 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- Compiler plugin to use Java 17 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<compilerArgs>
+						<arg>-parameters</arg>
+					</compilerArgs>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

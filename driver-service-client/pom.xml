@@ -4,19 +4,19 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- Reference to the fleet-management-microservices parent POM -->
+	<!-- Reference to the parent POM if applicable -->
 	<parent>
-		<groupId>com.fleetmanagement</groupId>
-		<artifactId>fleet-management-microservices</artifactId>
-		<version>1.0.0</version>
-		<relativePath>../pom.xml</relativePath> <!-- Adjust this path based on the actual structure -->
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.3</version>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<groupId>com.fleetmanagement</groupId>
-	<artifactId>tracking-service</artifactId>
+	<artifactId>driver-service-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>tracking-service</name>
-	<description>Tracking Service for Fleet Base Management Application</description>
+	<name>DriverServiceClient</name>
+	<description>Driver service client for Fleet Base Management Application</description>
 
 	<properties>
 		<java.version>17</java.version>
@@ -24,35 +24,53 @@
 	</properties>
 
 	<dependencies>
-		<!-- Spring Data JPA for database interaction -->
+		<!-- Spring Boot Starter Actuator -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
-		<!-- Spring Web for building REST APIs -->
+		<!-- Spring Boot Starter Web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- Eureka Client for service registration and discovery -->
+		<!-- Resilience4j Circuit Breaker -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 		</dependency>
 
-		<!-- PostgreSQL Driver for database connectivity -->
+		<!-- Spring Cloud OpenFeign -->
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Common Entities Dependency -->
+		<dependency>
+			<groupId>com.fleetmanagement</groupId>
+			<artifactId>common-entities</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<!-- Testing Dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -72,22 +90,11 @@
 
 	<build>
 		<plugins>
-			<!-- Spring Boot Maven Plugin for building the service -->
+			<!-- Spring Boot Maven Plugin -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
-				<configuration>
-					<compilerArgs>
-						<arg>-parameters</arg>
-					</compilerArgs>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
-
 </project>

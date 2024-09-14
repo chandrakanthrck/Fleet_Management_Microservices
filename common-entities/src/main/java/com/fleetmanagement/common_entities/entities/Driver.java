@@ -1,6 +1,5 @@
-package com.fleetmanagement.driver_service.entity;
+package com.fleetmanagement.common_entities.entities;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,12 +25,14 @@ public class Driver {
 
     @NotBlank(message = "Name is mandatory")
     private String name;
+
     @NotBlank(message = "License number is mandatory")
     private String licenseNumber;
+
     @NotBlank(message = "Phone number is mandatory")
     @Size(min = 10, max = 15, message = "Phone number should be between 10 and 15 characters")
     private String phoneNumber;
+
     @Email(message = "Email should be valid")
     private String email;
-
 }
